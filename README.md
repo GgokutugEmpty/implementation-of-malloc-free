@@ -11,4 +11,5 @@ This project implements a simple memory allocator using `malloc` and `free` func
 
 To compile the project, use the following command:
 
-```sh build.sh
+```
+sh build.sh
