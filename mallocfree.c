@@ -77,4 +77,12 @@ void free(void *ptr) {
     BlockHeader *block = (BlockHeader *)((uint8_t *)ptr - sizeof(BlockHeader));
     block->next = free_list;
     free_list = block;
+    size_t size = block->size;
+    for (size_t i = 0; i < size; i++) {
+        *((uint8_t *)ptr + i) = 0;
+    }
 }
+//
+// 21/09/2024
+//
+/*The free function has been updated. A loop has been added to reset the contents of the freed memory area. This reduces the risk of accessing invalid data when trying to use the memory after freeing it. This provides safer management against memory leaks and undefined behavior.*/
